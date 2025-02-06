@@ -1,0 +1,23 @@
+{% extends 'hp/base.html' %}
+{% load static %}
+{% block title %}Appointment Booked Successfully{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome {{request.user.username|capfirst}}</h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid">
+                    <a href="" class="btn btn-primary">Appointment Booked</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9 offset-sm-1 textcenter">
+            <h3>Appointment Booked Successfully</h3>
+            <div>
+              <iframe src="https://giphy.com/embed/ibolle3mOqHE3PQTtk" width="200" height="200" frameborder="0" class="giphy-embed" allowfullscreen></iframe>  
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

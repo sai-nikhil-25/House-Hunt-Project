@@ -1,0 +1,28 @@
+{% extends 'hp/base.html' %}
+{% load static %}
+{% block title %}View Appointment{% endblock title %}View Appointment
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">About Us</h1>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam vehicula urna, non tristique mi eleifend at.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-check me-2"></i> Lorem ipsum dolor sit amet</li>
+                        <li class="list-group-item"><i class="fas fa-check me-2"></i> Consectetur adipiscing elit</li>
+                        <li class="list-group-item"><i class="fas fa-check me-2"></i> Sed aliquam vehicula urna</li>
+                        <li class="list-group-item"><i class="fas fa-check me-2"></i> Non tristique mi eleifend at</li>
+                    </ul>
+                </div>
+                <div class="text-end m-5">
+                    <a href="{% url 'mainPage' %}" class="btn btn-primary">Back to Home Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}

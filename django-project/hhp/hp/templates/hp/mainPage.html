@@ -1,0 +1,151 @@
+{% extends 'hp/base.html' %} {% load humanize %} 
+{% load static %}
+{% block title %}Home{% endblock title %}Home
+
+{% block banner-slider %}
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'hp/images/banner/HH-1.jpg'%}" height="500" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'hp/images/banner/HH-2.jpg'%}" height="500" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'hp/images/banner/HH-3.jpg'%}" height="500" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+
+{% endblock banner-slider %}
+
+{% block information %}
+<div class="container m-5">
+  <div class="row bg-primary text-center p-5 text-white border-bottom shadow">
+    <h2>Discover Your Dream Home: Start Your House Hunt Today!</h2>
+
+      <small class="fs-5">This website provides a comprehensive platform for searching rental houses. Whether you're looking
+        for a cozy apartment, a spacious house, or a luxurious villa, our website offers a wide range of listings to meet your
+        needs. With advanced search filters, detailed property descriptions, and high-quality images, finding your dream
+        rental property has never been easier. Start your house hunt today!</small>
+      </div>
+    </div>
+
+{% endblock information %}
+
+
+{% block main-content %}
+{% if selected_place %}
+    <div class="jumbotron text-center" style="background-color: #f8f9fa; border-radius: 15px; padding: 20px;">
+        <h3 class="display-4">Search By Places: {{ selected_place }}</h3>
+        <hr class="my-4">
+    </div>
+{% else %}
+    <div class="container">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Search By Categories!</h4>
+            <p class="mb-0">Start searching for places by selecting a category below.</p>
+        </div>
+    </div>
+{% endif %}
+
+<div class="container m-5">
+
+  <div class="row">
+      <div class="col-md-2">
+          <div class="card">
+
+              <div class="card-header">
+                  Categories
+              </div>
+
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><a href="{% url 'mainPage' %}" style="text-decoration: none !important; color: black !important">All</a></li>
+                  {% for category in categories %}
+                  <li class="list-group-item"><a href="{% url 'mainPage' %}?category={{category.name}}" style="text-decoration: none !important; color: black !important">{{ category.name }}</a></li>
+                  {% endfor %}
+              </ul>
+
+          </div>
+      </div>
+
+      <div class="col-md-10">
+          <div class="row">
+              {% if listings %}
+              {% for listing in listings %}
+              <div class="col-md-4">
+                  <div class="card mb-4">
+                      <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="Card image cap">
+                      <!-- <div class="card-img-overlay">
+                          <h2>
+                              <span class="badge badge-success text-white" style="background-color:blue !important;">${{ listing.price | intcomma }}</span>
+                          </h2>
+                      </div> -->
+                      <h2 class="position-absolute badge badge-success text-white" style="background-color:blue; top: 0; left: 0;font-size: 1.5rem; margin: 10px">${{ listing.price | intcomma }}</h2>
+
+                      <div class="card-body">
+
+                          <div class="listing-heading text-center">
+                              <h4 class="text-primary">{{ listing.title }}</h4>
+                              <p>
+                                  <i class="fas fa-map-marker-alt text-primary"></i>
+                                  {{ listing.city }} {{ listing.state }} {{ listing.zipcode }}
+                              </p>
+                          </div>
+
+                          <hr>
+
+                          <div class="row py-2 text-secondary">
+                              <div class="col-6">
+                                  <i class="fas fa-th-large text-primary"></i> Sqft: {{ listing.sqft }}
+                              </div>
+                              <div class="col-6">
+                                  <i class="fas fa-car text-primary"></i> Garage: {{ listing.garage }}
+                              </div>
+                          </div>
+
+                          <div class="row py-2 text-secondary">
+                              <div class="col-6">
+                                  <i class="fas fa-bed text-primary"></i> Bedrooms: {{ listing.bedrooms }}
+                              </div>
+                              <div class="col-6">
+                                  <i class="fas fa-bath text-primary"></i> Bathrooms: {{ listing.bathrooms }}
+                              </div>
+                          </div>
+
+                          <hr>
+
+                          <div class="row py-2 text-secondary">
+                              <div class="col-12">
+                                  <i class="fas fa-user text-primary"></i> {{ listing.owner }}
+                              </div>
+                          </div>
+
+                          <div class="row text-secondary pb-2">
+                              <div class="col-8">
+                                  <i class="fas fa-home text-primary"></i> {{ listing.category  }}
+                              </div>
+                          </div>
+                          <hr>
+
+                          <a href="{% url 'viewPage' pk=listing.pk %}" class="btn btn-primary">View Details</a>
+
+                      </div>
+                  </div>
+              </div>
+
+
+              {% endfor %}
+              {% else %}
+              <div class="col-md-12">
+                  <h3>No Listings Available</h3>
+              </div>
+              {% endif %}
+          </div>
+      </div>
+  </div>
+</div>
+
+
+{% endblock main-content %}
+

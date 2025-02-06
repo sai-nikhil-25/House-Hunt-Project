@@ -1,0 +1,26 @@
+{% extends 'hp/base.html' %}
+{% load static %}
+{% block title %}View Appointment{% endblock title %}View Appointment
+
+{% block main-content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Contact Us</h1>
+                    <p class="card-text">Feel free to reach out to us for any inquiries or assistance!</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-envelope me-2"></i> example@example.com</li>
+                        <li class="list-group-item"><i class="fas fa-phone-alt me-2"></i> +1 (123) 456-7890</li>
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt me-2"></i> 123 Street Name, City, Country</li>
+                    </ul>
+                </div>
+                <div class="text-end m-5">
+                    <a href="{% url 'mainPage' %}" class="btn btn-primary">Back to Home Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

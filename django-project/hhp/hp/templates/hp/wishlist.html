@@ -1,0 +1,29 @@
+{% extends 'hp/base.html' %}
+{% load static %}
+{% block title %}Wishlist{% endblock title %}Wishlist
+{% block main-content %}
+<div class="container mt-5">
+    <h1>Wishlist</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Listing Title</th>
+                    <th>Owner</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wishlist_item in wishlist_items %}
+                <tr>
+                    <td>{{ wishlist_item.listing.title }}</td>
+                    <td>{{ wishlist_item.listing.owner }}</td>
+                    <td>{{ wishlist_item.listing.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'mainPage' %}" class="btn btn-primary">Go Back</a>
+</div>
+{% endblock main-content %}
